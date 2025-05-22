@@ -9,8 +9,8 @@ struct Node{
 
 Node* build123();
 void print_List(Node* L);
-void pop_front(Node* $H);
-void pop_back(Node* $H);
+void pop_front(Node* &H);
+void pop_back(Node* &H);
 Node* get_prev_last(Node* L);
 
 int main(){
@@ -24,34 +24,30 @@ int main(){
 }
 
 Node* get_prev_last(Node* L){
-    if (L == nullptr){
-      return nullptr;
-    }
-    Node* anterior = new Node();
-    anterior = nullptr;
-    Node* atual = new Node();
-    atual = L;
-    Node* frente = new Node();
-    frente = L->next;
-
-    while(frente != nullptr){
+    if (L == nullptr || L->next == nullptr) return nullptr;
+    Node* anterior = nullptr;
+    Node* atual = L;
+    while(atual->next != nullptr){
         anterior = atual;
-        atual = frente;
-        frente = frente->next;    
+        atual = atual->next;
     }
     return anterior;
 }
 
-void pop_back(Node* $H){
-    if (H == nullptr){
+void pop_back(Node* &H){
+    if (H == nullptr) return;
+    if (H->next == nullptr) {
+        delete H;
+        H = nullptr;
         return;
     }
     Node* prev = get_prev_last(H);
-    prev = prev->next;
-    
+    Node* target = prev->next;
+    prev->next = nullptr;
+    delete target;
 }
 
-void pop_front(Node* $H){
+void pop_front(Node* &H){
     if (H == nullptr){
         return;
     }  
@@ -92,4 +88,4 @@ Node* build123(){
     n3->next = n4;
 
     return n1;
-};
+}
