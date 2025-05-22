@@ -12,6 +12,9 @@ void print_List(Node* L);
 void pop_front(Node* &H);
 void pop_back(Node* &H);
 Node* get_prev_last(Node* L);
+void pop_at(Node* &H, int idx);
+int size_list(Node* L);
+Node* get_prev(Node* L, int idx); // Function to get the previous node of the node at index idx
 
 int main(){
     Node* L = build123();
@@ -20,7 +23,28 @@ int main(){
     print_List(L);
     pop_back(L);
     print_List(L);
+    pop_at(L, 1);
+    print_List(L);
     return 0;
+}
+
+void pop_at(Node* &H, int idx){ 
+    if (H == nullptr || idx > size_list(H) || idx < 0) return; // Check if the list is empty or if the index is out of bounds
+    
+
+}
+
+Node* get_prev(Node* L, int idx){
+    if (inx>size_list(L) || idx < 0) return nullptr;
+}
+
+int size_list(Node* L){
+    int cont = 0;
+    while(L != nullptr){
+        cont++;
+        L = L->next;
+    }
+    return cont;
 }
 
 Node* get_prev_last(Node* L){
