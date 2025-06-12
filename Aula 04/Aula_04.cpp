@@ -36,6 +36,7 @@ void insertionSort(Node* L) {
 
         while (t->data > d->data && t->prev != nullptr) { // Enquanto o valor de t for maior que o de d e t não for o head
             t = t->prev; // Move t para o nó anterior enquanto o valor de t for maior que d
+            
         }
     }
 
