@@ -53,6 +53,18 @@ void insert(Node* node){
         atual->next = node; // Insere o novo nó no final da lista encadeada
     }
 }
+
+Node* busca (int key) {
+    int index = hFunction(key); // Calcula o índice usando a função hash
+    Node* atual = ht[index]; // Acessa a lista encadeada no índice calculado
+
+    while (atual->next != nullptr) {
+        if (atual->key == key) {
+            return atual; // Retorna o nó se a chave for encontrada
+        }
+    }
+    return nullptr; // Retorna nullptr se a chave não for encontrada
+}
     
 
 int main(){
@@ -75,14 +87,16 @@ int main(){
     insert(n3);
 
 
-    printTable(); // Imprime a tabela hash
+    printTable();
 
     insert(n4);
     insert(n5);
     insert(n6);
     insert(n7);
 
-    printTable(); // Imprime a tabela hash após inserir mais nós
+    printTable(); 
+
+    
 
     return 0;
 }
